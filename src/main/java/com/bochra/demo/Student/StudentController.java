@@ -4,6 +4,7 @@ package com.bochra.demo.Student;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +20,9 @@ public class StudentController {
     
     private StudentService service;
     @Autowired
-    public StudentController(StudentService service){
+    public StudentController(
+            @Qualifier("DBStudentService") StudentService service)
+    {
         this.service=service;
     }
     @PostMapping
